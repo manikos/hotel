@@ -1,0 +1,44 @@
+# File types #
+##############
+*.pyc
+*.swo
+*.swp
+*.swn
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+
+# Directories #
+###############
+*/settings/pp/*
+media_local/
+media_remote/
+static_remote/
+static_src/
+node_modules/
+static/img/email/prod_thumbs_for_email/
+.idea/
+lib-cov
+pids
+results
+
+
+# Specific files #
+##################
+*/settings/secret.json
+*/settings/secret.secret
+npm-debug.log
+.sass-cache
+
+# OS generated files #
+######################
+.DS_Store
+ehthumbs.db
+Icon
+Thumbs.db
+*~
