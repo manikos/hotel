@@ -16,6 +16,21 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token, refresh_jwt_token
+
+from my_auth import views as my_auth_views
+from blog import views as blog_views
+
+
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^$', blog_views.homepage, name='homepage'),
+
+    url(r'^auth/$', obtain_jwt_token),
+    url(r'^verify-jwt/$', verify_jwt_token),
+    url(r'^refresh-jwt/$', refresh_jwt_token),
+
+    url(r'^users/$', blog_views.UserCreate.as_view()),
+    url(r'^users/(?P<username>\w+)/$', blog_views.UserDetail.as_view()),
+
+    # url(r'^admin/', admin.site.urls),
 ]

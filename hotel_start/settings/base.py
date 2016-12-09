@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 from json import loads
+from datetime import timedelta
 from os.path import abspath, dirname, join
 
 from django.utils.translation import ugettext_lazy as _
@@ -60,6 +61,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'blog.apps.BlogConfig',
+    'my_auth.apps.MyAuthConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -77,7 +82,7 @@ ROOT_URLCONF = 'hotel_start.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [root('templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -137,7 +142,77 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
+##########################
+#  STATIC CONFIGURATION  #
+##########################
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-
 STATIC_URL = '/static/'
+STATIC_ROOT = root('static_root')
+
+STATICFILES_DIRS = (
+    # CSS files
+    ('css', root('static/css')),
+
+    # JS files
+    ('js', root('static/js')),
+
+    # Images
+    # ('img/icons', root('static/img/icons')),
+    # ('img/shapes', root('static/img/shapes'))
+)
+
+
+##########################
+#   MEDIA CONFIGURATION  #
+##########################
+MEDIA_URL = '/media/'
+MEDIA_ROOT = root('media_root')
+
+
+###################################
+#   REST FRAMEWORK CONFIGURATION  #
+###################################
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.IsAuthenticated',
+#         # 'rest_framework.permissions.DjangoModelPermissions',
+#     ),
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'rest_framework.authentication.SessionAuthentication',
+#         'rest_framework.authentication.BasicAuthentication',
+#         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+#     ),
+# }
+
+
+JWT_AUTH = {
+    # 'JWT_ENCODE_HANDLER':
+    # 'rest_framework_jwt.utils.jwt_encode_handler',
+    #
+    # 'JWT_DECODE_HANDLER':
+    # 'rest_framework_jwt.utils.jwt_decode_handler',
+    #
+    # 'JWT_PAYLOAD_HANDLER':
+    # 'rest_framework_jwt.utils.jwt_payload_handler',
+    #
+    # 'JWT_PAYLOAD_GET_USER_ID_HANDLER':
+    # 'rest_framework_jwt.utils.jwt_get_user_id_from_payload_handler',
+    #
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'my_auth.utils.jwt_response_payload_handler',
+    #
+    # 'JWT_SECRET_KEY': settings.SECRET_KEY,
+    # 'JWT_PUBLIC_KEY': None,
+    # 'JWT_PRIVATE_KEY': None,
+    # 'JWT_ALGORITHM': 'HS256',
+    # 'JWT_VERIFY': True,
+    # 'JWT_VERIFY_EXPIRATION': True,
+    # 'JWT_LEEWAY': 0,
+    'JWT_EXPIRATION_DELTA': timedelta(hours=4),
+    # 'JWT_AUDIENCE': None,
+    # 'JWT_ISSUER': None,
+
+    'JWT_ALLOW_REFRESH': True,
+    # 'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
+
+    # 'JWT_AUTH_HEADER_PREFIX': 'JWT',
+}
