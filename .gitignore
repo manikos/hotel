@@ -24,6 +24,12 @@ lib-cov
 pids
 results
 
+# FRONT-END #
+#############
+hotel-client/.DS_Store
+hotel-client/node_modules/
+hotel-client/dist/
+hotel-client/npm-debug.log
 
 # Specific files #
 ##################
@@ -39,3 +45,4 @@ ehthumbs.db
 Icon
 Thumbs.db
 *~
+
