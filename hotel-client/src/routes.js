@@ -4,10 +4,19 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 // Import route components
+import  Auth from './components/auth/Auth.vue';
+import  Register from './components/auth/Register.vue';
+import  Login from './components/auth/Login.vue';
 
 // Define routes
 const routes = [
-
+    {
+        path: '/auth', component: Auth, redirect: '/auth/login', //redirect to prevent direct access to Auth component
+        children: [
+            {path: 'register', component: Register},
+            {path: 'login', component: Login},
+        ]
+    },
 ];
 
 // Create router instance
