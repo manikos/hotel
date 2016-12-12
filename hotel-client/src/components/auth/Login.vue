@@ -1,18 +1,33 @@
 <template>
     <div>
         <h3>Enter your credentials to login</h3>
-        <form v-on:submit.prevent='onFormSubmit'>
+        <form v-on:submit.prevent='login'>
             <!--Username-->
             <div class="form-group">
                 <label for='username'>Username</label>
-                <input id="username" type="text" class="form-control" placeholder="Enter Username">
+                <input id="username"
+                       type="text"
+                       class="form-control"
+                       placeholder="Enter Username"
+                       v-model="user.username"
+                >
             </div>
             <!--Password-->
             <div class="form-group">
                 <label for='username'>Password</label>
-                <input id="password" type="text" class="form-control" placeholder="Enter Password">
+                <input id="password"
+                       type="text"
+                       class="form-control"
+                       placeholder="Enter Password"
+                       v-model="user.password"
+                >
             </div>
-            <input type="submit" value="Login" class="btn btn-success col-sm-12">
+            <!--Submit button-->
+            <button type="submit"
+                    class="btn btn-success col-sm-12"
+            >
+                Login
+            </button>
         </form>
         <hr>
         <div class="row">
@@ -28,7 +43,33 @@
 
     //
     export default {
-        name: 'login'
+        name: 'Login',
+        data() {
+            return {
+                user: {
+                    username: '',
+                    password: '', // TODO: should this be encrypted? Are we OK using https:// ?
+                }
+            }
+        },
+        methods: {
+            // TODO consider moving method to `Auth` plugin
+            login() {
+                this.$http.post('/auth', this.user)
+                    .then(response => {
+                        // Store the received JWT + expiration date
+                        this.$auth.setToken(response.body.token, Date.now() + 14400000);
+                        // Redirect user
+                        // TODO: Is server sending redirect urls? what we do?
+                        // TODO: redirect according to the role?
+                        this.$router.push('/youareloggedin')
+
+                    })
+                    .catch(response => {
+                        console.log(response);
+                    });
+            }
+        }
     };
 </script>
 

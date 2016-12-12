@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3>Enter your details to register</h3>
-        <form v-on:submit.prevent='onFormSubmit'>
+        <form v-on:submit.prevent='register'>
             <!--Email-->
             <div class="form-group">
                 <label for='email'>Email</label>
@@ -32,7 +32,12 @@
                        v-model="user.password"
                 >
             </div>
-            <input type="submit" value="Register" class="btn btn-success col-sm-12">
+            <!--Submit button-->
+            <button type="submit"
+                    class="btn btn-success col-sm-12"
+            >
+                Register
+            </button>
         </form>
         <hr>
         <p class="text-center">
@@ -54,6 +59,20 @@
                     username: '',
                     password: ''
                 }
+            }
+        },
+        methods: {
+            // TODO consider moving method to `Auth` plugin
+            register() {
+                console.log(this.user);
+                this.$http.post('/users', this.user)
+                    .then(response => {
+                        // TODO: Is server sending redirect urls? what we do?
+                        //
+                    })
+                    .catch(response => {
+                        //
+                    });
             }
         }
     };

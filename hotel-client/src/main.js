@@ -3,6 +3,18 @@
 import Vue from 'vue'
 import App from './App'
 import  Router from './routes'
+import VueResource from 'vue-resource';
+Vue.use(VueResource);
+
+/**
+ * ---------------------
+ * Custom plugin Imports
+ * ---------------------
+ */
+import Auth from './plugins/Auth';
+Vue.use(Auth);
+
+import './config';
 
 /* eslint-disable no-new */
 new Vue({
