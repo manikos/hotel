@@ -1,1 +1,21 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><title>hotel-client</title><link href=/static/css/app.021b50ad9c20476e5ac412117c381093.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/static/js/manifest.b952ffd7637ac6ba8735.js></script><script type=text/javascript src=/static/js/vendor.f79dcef55023c1c4bede.js></script><script type=text/javascript src=/static/js/app.77617b9cc092de435830.js></script></body></html>
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang={{ LANGUAGE_CODE }}>
+
+    <head>
+        <meta charset=utf-8>
+        <title>hotel-client</title>
+        <link rel=stylesheet href={% static 'css/app.021b50ad9c20476e5ac412117c381093.css' %}>
+    </head>
+
+    <body>
+        <div id=app></div>
+
+        <script type=text/javascript src={% static 'js/manifest.b952ffd7637ac6ba8735.js' %}></script>
+        <script type=text/javascript src={% static 'js/vendor.f79dcef55023c1c4bede.js' %}></script>
+        <script type=text/javascript src={% static 'js/app.77617b9cc092de435830.js' %}></script>
+    </body>
+
+</html>

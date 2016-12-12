@@ -29,7 +29,7 @@ Vue.http.interceptors.push((request, next) => {
     // We assume that if the $URL$ starts with '/' we are making a call to LOCAL server
     if (request.url[0] === '/') {
         // ... so we are pre-pending the local API URL
-        request.url = process.env.API + request.url;
+        request.url = process.env.API + request.url + '/';
     }
     // Otherwise, if the URL starts with http(s)://
     // we assume we are making a call to an external API
@@ -40,7 +40,7 @@ Vue.http.interceptors.push((request, next) => {
      */
     let token = Vue.auth.getToken();
     if (token)
-        request.headers.set('Authorization', 'Bearer' + token);
+        request.headers.set('Authorization', 'JWT ' + token);
 
     /**
      * MODIFY RESPONSE
