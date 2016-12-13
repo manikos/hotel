@@ -10,7 +10,7 @@
                        class="form-control"
                        placeholder="Enter Username"
                        v-model="user.username"
-                >
+                >`
             </div>
             <!--Password-->
             <div class="form-group">

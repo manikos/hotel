@@ -5,6 +5,9 @@ import App from './App'
 import  Router from './routes'
 import VueResource from 'vue-resource';
 Vue.use(VueResource);
+import Element from 'element-ui';
+import 'element-ui/lib/theme-default/index.css';
+Vue.use(Element);
 
 /**
  * ---------------------

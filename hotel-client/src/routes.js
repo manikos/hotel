@@ -16,9 +16,16 @@ Vue.use(AuthPlugin);
  * Import route components
  * ---------------------------------
  */
+// Auth components
 import  Auth from './components/auth/Auth.vue';
 import  Register from './components/auth/Register.vue';
 import  Login from './components/auth/Login.vue';
+// Admin components
+import Admin from './components/admin/Admin.vue';
+import Dash from './components/admin/Dash.vue';
+import UserIndex from './components/admin/user/UserIndex.vue';
+import UserShow from './components/admin/user/UserShow.vue';
+import UserEdit from './components/admin/user/UserEdit.vue';
 
 /**
  * --------------------------------
@@ -26,6 +33,17 @@ import  Login from './components/auth/Login.vue';
  * --------------------------------
  */
 const routes = [
+    // Admin routes
+    {
+        path: '/admin', component: Admin, redirect: '/admin/dash',
+        children: [
+            {path: 'dash', component: Dash},
+            {path: 'user', component: UserIndex},
+            {path: 'user/:id', name: 'showUser', component: UserShow},
+            {path: 'user/:id/edit', name: 'editUser', component: UserEdit}
+        ]
+    },
+    // Auth routes
     {
         path: '/auth', component: Auth, redirect: '/auth/login', //redirect to prevent direct access to Auth component
         children: [
@@ -54,7 +72,7 @@ const router = new VueRouter({
 // --------------------------------------------------------------------------------------------
 router.beforeEach((to, from, next) => {
     // If user is logged in and request routes that requires meta `guest`
-    if(Vue.auth.loggedIn() && to.matched.some( record => record.meta.guest)) {
+    if (Vue.auth.loggedIn() && to.matched.some(record => record.meta.guest)) {
         // we redirect the logged-in user to profile
         next({path: '/youareloggedin'});
     } else {
