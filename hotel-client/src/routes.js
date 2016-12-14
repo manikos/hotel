@@ -39,7 +39,7 @@ const routes = [
         children: [
             {path: 'dash', component: Dash},
             {path: 'user', component: UserIndex},
-            {path: 'user/:id', name: 'showUser', component: UserShow},
+            // {path: 'user/:id', name: 'showUser', component: UserShow},
             {path: 'user/:id/edit', name: 'editUser', component: UserEdit}
         ]
     },

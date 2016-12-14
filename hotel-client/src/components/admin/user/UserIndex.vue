@@ -23,12 +23,13 @@
                 <td>{{user.last_login}}</td>
                 <td>
                     <button class="btn btn-flat btn-xs btn-primary"
-                            @click="showUser(user.id)"
+                            type="button"
+                            @click="showUser(user)"
                     >
-                        Show
+                        Show User Modal
                     </button>
                     <button class="btn btn-flat btn-xs btn-warning"
-                            @click="editUser(user.id)"
+                            @click="editUser(user)"
                     >
                         Edit
                     </button>
@@ -41,14 +42,35 @@
             </tr>
             </tbody>
         </table>
+
+        <!--User Show Modal (init state: showModal = false)-->
+        <!--###############################################-->
+        <transition name="modal" mode="out-in">
+            <!--TODO use a $watcher to watch which user was clicked-->
+            <user-show-modal v-if="showModal"
+                             @close="showModal = false"
+                             :user="userSelected"
+            >
+            </user-show-modal>
+        </transition>
+
+        <!--User Edit Modal (init state: showModal = false)-->
+        <!--###############################################-->
+
     </div>
 </template>
 
 <script>
+    import UserShowModal from './UserShow.vue';
+
     export default {
+        components: {
+            UserShowModal
+        },
         name: 'UserManagement',
         data() {
             return {
+                showModal: false,
                 users: [
                     {
                         id: 1,
@@ -67,14 +89,21 @@
                         last_login: '20/12/2015'
                     },
                 ],
+                userSelected: {}
             }
         },
         methods: {
-            showUser(id) {
-                this.$router.push({name: 'showUser', params: {id: id}})
+            showUser(user) {
+                //TODO Make an ajax request to fetch user ?
+                this.userSelected = user;
+                this.showModal = true;
             },
-            editUser(id) {
-                this.$router.push({name: 'editUser', params: {id: id}})
+            editUser(user) {
+                this.$router.push({name: 'editUser', params: {id: user.id}});
+                /* TODO Alternatively we can make a "source of truth" to manage state:
+                    e.g: var store.userSelected = user
+                    in *editUser* component: data() {return {sharedState: store.userSelected}}
+                 */
             },
             deleteUser(id) {
                 // Sent DELETE ajax request to server
@@ -83,6 +112,15 @@
     };
 </script>
 
-<style lang="sass" rel="stylesheet/scss">
+<style style lang="scss" rel="stylesheet/scss">
+    /*TODO @import or use it in App.vue*/
+    .modal-enter-active,
+    .modal-leave-active {
+        transition: opacity .2s ease;
+    }
 
+    .modal-enter,
+    .modal-leave-active {
+        opacity: 0;
+    }
 </style>

@@ -6,7 +6,14 @@
 
 <script>
     export default {
-        name: 'UserEdit'
+        name: 'UserEdit',
+
+        mounted() {
+            //TODO: mae an ajax call to get :id user's data
+            console.log(this.$route.params)
+        }
+
+
 
     };
 </script>
