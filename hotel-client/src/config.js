@@ -1,25 +1,20 @@
 // THIS FILE CONTAINS THE CONFIGURATION OPTIONS FOR THE WHOLE PROJECT
 // IT CONFIGURES THE *VUE INSTANCE* SO IT APPLIES GLOBALLY
-
-/**
- * -------------------------------
- * HTTP REQUEST / RESPONSE CONFIG
- * -------------------------------
- */
 // TODO: consider using a better way for using Vue instance (if importing no caching)....
-import Vue from 'vue';
-import VueResource from 'vue-resource';
+import Vue from "vue";
+import VueResource from "vue-resource";
+import AuthPlugin from "./plugins/Auth"; // Import also Auth plugin to use it with interceptors
 Vue.use(VueResource);
-// Import also Auth plugin to use it with interceptors
-import AuthPlugin from './plugins/Auth';
 Vue.use(AuthPlugin);
 
+/**
+ * HTTP REQUEST / RESPONSE CONFIG
+ */
 // Process requests/responses globally
 Vue.http.interceptors.push((request, next) => {
 
     /**
      * MODIFY REQUEST
-     * -----------------------
      */
 
     /**

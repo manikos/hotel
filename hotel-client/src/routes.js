@@ -1,36 +1,22 @@
-/**
- * ---------------------------------------------------
- * Import Vue and VueRouter and register the component
- * ---------------------------------------------------
- */
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-Vue.use(VueRouter);
+import Vue from "vue";
+import VueRouter from "vue-router";
+import AuthPlugin from "./plugins/Auth";
+import Auth from "./components/auth/Auth.vue";
+import Register from "./components/auth/Register.vue";
+import Login from "./components/auth/Login.vue";
+import Admin from "./components/admin/Admin.vue";
+import Dash from "./components/admin/Dash.vue";
+import UserIndex from "./components/admin/user/UserIndex.vue";
+import UserEdit from "./components/admin/user/UserEdit.vue";
 
-// Import also Auth plugin to use it in navigation guards
-import AuthPlugin from './plugins/Auth';
+/**
+ * Register required plugins
+ */
+Vue.use(VueRouter);
 Vue.use(AuthPlugin);
 
 /**
- * ---------------------------------
- * Import route components
- * ---------------------------------
- */
-// Auth components
-import  Auth from './components/auth/Auth.vue';
-import  Register from './components/auth/Register.vue';
-import  Login from './components/auth/Login.vue';
-// Admin components
-import Admin from './components/admin/Admin.vue';
-import Dash from './components/admin/Dash.vue';
-import UserIndex from './components/admin/user/UserIndex.vue';
-import UserShow from './components/admin/user/UserShow.vue';
-import UserEdit from './components/admin/user/UserEdit.vue';
-
-/**
- * --------------------------------
  * Define routes
- * --------------------------------
  */
 const routes = [
     // Admin routes
@@ -54,22 +40,17 @@ const routes = [
 ];
 
 /**
- * ---------------------------------
  * Create router instance
- * ---------------------------------
  */
 const router = new VueRouter({
     routes // short for routes: routes
 });
 
 /**
- * ----------------------------------
  * Define navigation guards
- * ----------------------------------
  */
 
 // Guard to prevent a user from accessing Login component after she has successfully logged in
-// --------------------------------------------------------------------------------------------
 router.beforeEach((to, from, next) => {
     // If user is logged in and request routes that requires meta `guest`
     if (Vue.auth.loggedIn() && to.matched.some(record => record.meta.guest)) {
@@ -81,8 +62,6 @@ router.beforeEach((to, from, next) => {
 });
 
 /**
- * ---------------------------------
  * Export router instance
- * ---------------------------------
  */
 export default router;
