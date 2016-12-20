@@ -13,7 +13,7 @@
 
 <script>
     export default {
-        name: 'AdminSidebar'
+        name: 'sidebar'
     };
 </script>
 

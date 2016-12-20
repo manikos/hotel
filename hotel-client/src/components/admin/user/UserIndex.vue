@@ -67,7 +67,7 @@
         components: {
             UserShowModal
         },
-        name: 'UserManagement',
+        name: 'userManagement',
         data() {
             return {
                 showModal: false,
@@ -99,7 +99,7 @@
                 this.showModal = true;
             },
             editUser(user) {
-                this.$router.push({name: 'editUser', params: {id: user.id}});
+                this.$router.push({name: 'userEdit', params: {id: user.id}});
                 /* TODO Alternatively we can make a "source of truth" to manage state:
                     e.g: var store.userSelected = user
                     in *editUser* component: data() {return {sharedState: store.userSelected}}

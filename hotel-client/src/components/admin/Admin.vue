@@ -14,9 +14,9 @@
 </template>
 
 <script>
-    import AdminSidebar from './AdminSidebar.vue';
+    import AdminSidebar from './Sidebar.vue';
     export default {
-        name: 'Admin',
+        name: 'admin',
         components: {
             adminSidebar: AdminSidebar
         }
