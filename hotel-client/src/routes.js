@@ -58,8 +58,8 @@ router.beforeEach((to, from, next) => {
         next({path: '/dash'});
         // If user is not logged-in and route requiresAuthorize == true
     } else if (!Vue.auth.loggedIn() && to.matched.some(record => record.meta.requiresAuth)) {
-        // next({path: '/auth/login'});
-        next();
+        next({path: '/auth/login'});
+        // next();
     } else {
         next();
     }
