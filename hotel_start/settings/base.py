@@ -152,6 +152,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = root('static_root')
 
 STATICFILES_DIRS = (
+    # Admin files
+    ('admin-lte', root('static/admin-lte')),
+
     # CSS files
     ('css', root('static/css')),
 
@@ -159,7 +162,7 @@ STATICFILES_DIRS = (
     ('js', root('static/js')),
 
     # Images
-    # ('img/icons', root('static/img/icons')),
+    ('img', root('static/img')),
     # ('img/shapes', root('static/img/shapes'))
 )
 
