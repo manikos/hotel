@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h2>Users Management</h2>
         <div class="box box-solid box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">User listing</h3>

@@ -5,7 +5,7 @@ import Auth from "./components/auth/Auth.vue";
 import Register from "./components/auth/Register.vue";
 import Login from "./components/auth/Login.vue";
 import Admin from "./components/admin/Admin.vue";
-import Dash from "./components/admin/Dash.vue";
+import Dash from "./components/admin/dash/Dash.vue";
 import UserIndex from "./components/admin/user/UserIndex.vue";
 import UserEdit from "./components/admin/user/UserEdit.vue";
 
@@ -23,7 +23,7 @@ const routes = [
     {
         path: '/', component: Admin, redirect: '/dash',
         children: [
-            {path: 'dash', component: Dash},
+            {path: 'dash', component: Dash, meta: {requiresAuth: true}},
             {path: 'user', component: UserIndex},
             // {path: 'user/:id', name: 'userShow', component: UserShow},
             {path: 'user/:id/edit', name: 'userEdit', component: UserEdit}
@@ -56,6 +56,10 @@ router.beforeEach((to, from, next) => {
     if (Vue.auth.loggedIn() && to.matched.some(record => record.meta.guest)) {
         // we redirect the logged-in user to profile
         next({path: '/dash'});
+        // If user is not logged-in and route requiresAuthorize == true
+    } else if (!Vue.auth.loggedIn() && to.matched.some(record => record.meta.requiresAuth)) {
+        // next({path: '/auth/login'});
+        next();
     } else {
         next();
     }
