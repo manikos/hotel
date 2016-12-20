@@ -1,47 +1,59 @@
 <template>
     <div>
-        <h2>All users listing</h2>
-        <table class="table .table-condensed">
-            <thead>
-            <tr>
-                <th>id</th>
-                <th>username</th>
-                <th>first name</th>
-                <th>last name</th>
-                <th>email</th>
-                <th>last_login</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="user in users">
-                <td>{{user.id}}</td>
-                <td>{{user.username}}</td>
-                <td>{{user.first_name}}</td>
-                <td>{{user.last_name}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.last_login}}</td>
-                <td>
-                    <button class="btn btn-flat btn-xs btn-primary"
-                            type="button"
-                            @click="showUser(user)"
-                    >
-                        Show User Modal
-                    </button>
-                    <button class="btn btn-flat btn-xs btn-warning"
-                            @click="editUser(user)"
-                    >
-                        Edit
-                    </button>
-                    <button class="btn btn-flat btn-xs btn-danger"
-                            @click="deleteUser"
-                    >
-                        Delete
-                    </button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="box box-solid box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">User listing</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <table class="table .table-condensed">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>username</th>
+                        <th>first name</th>
+                        <th>last name</th>
+                        <th>email</th>
+                        <th>last_login</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="user in users">
+                        <td>{{user.id}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.first_name}}</td>
+                        <td>{{user.last_name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.last_login}}</td>
+                        <td>
+                            <button class="btn btn-flat btn-xs btn-primary"
+                                    type="button"
+                                    @click="showUser(user)"
+                            >
+                                <i class="fa fa-eye"></i> Show
+                            </button>
+                            <button class="btn btn-flat btn-xs btn-warning"
+                                    @click="editUser(user)"
+                            >
+                                <i class="fa fa-pencil-square-o"></i> Edit
+                            </button>
+                            <button class="btn btn-flat btn-xs btn-danger"
+                                    @click="deleteUser"
+                            >
+                                <i class="fa fa-trash"></i> Delete
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div><!-- /.box-body -->
+            <div class="box-footer">
+                The footer of the box
+            </div><!-- box-footer -->
+        </div><!-- /.box -->
+
+
+
 
         <!--User Show Modal (init state: showModal = false)-->
         <!--###############################################-->

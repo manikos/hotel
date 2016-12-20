@@ -21,7 +21,7 @@ Vue.use(AuthPlugin);
 const routes = [
     // Admin routes
     {
-        path: '/admin', component: Admin, redirect: '/admin/dash',
+        path: '/', component: Admin, redirect: '/dash',
         children: [
             {path: 'dash', component: Dash},
             {path: 'user', component: UserIndex},
@@ -55,7 +55,7 @@ router.beforeEach((to, from, next) => {
     // If user is logged in and request routes that requires meta `guest`
     if (Vue.auth.loggedIn() && to.matched.some(record => record.meta.guest)) {
         // we redirect the logged-in user to profile
-        next({path: '/youareloggedin'});
+        next({path: '/dash'});
     } else {
         next();
     }

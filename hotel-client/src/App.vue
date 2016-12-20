@@ -9,5 +9,7 @@
 </script>
 
 <style>
-
+    /*@import "/static/admin-lte/css/bootstrap.css";*/
+    /*@import "/static/admin-lte/css/AdminLTE.css";*/
+    /*@import "/static/admin-lte/css/_all-skins.css";*/
 </style>

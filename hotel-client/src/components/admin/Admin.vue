@@ -1,29 +1,58 @@
 <template>
     <div>
-        <div class="container">
-            <div class="col-sm-8">
+        <!-- Main Header -->
+        <app-header></app-header>
+
+        <!-- Left side column. contains the logo and sidebar -->
+        <app-sidebar></app-sidebar>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Διαχείριση Χρηστών
+                    <small>Optional description</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                    <li class="active">Here</li>
+                </ol>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <!-- Your Page Content Here -->
                 <!--this will change-->
                 <router-view></router-view>
-            </div>
-            <div class="col-sm-4">
-                <adminSidebar></adminSidebar>
-            </div>
+            </section>
+            <!-- /.content -->
         </div>
+
+        <!-- Main Footer -->
+        <app-footer></app-footer>
+
+        <!-- Control Sidebar -->
+        <app-control-sidebar></app-control-sidebar>
 
     </div>
 </template>
 
 <script>
-    import AdminSidebar from './Sidebar.vue';
+    //    import '../../assets/js/admin-app'
+    import AppHeader from './Header.vue';
+    import AppSidebar from './Sidebar.vue';
+    import AppFooter from './Footer.vue';
+    import AppControlSidebar from './ControlSidebar.vue'
     export default {
         name: 'admin',
         components: {
-            adminSidebar: AdminSidebar
+            AppSidebar,
+            AppHeader,
+            AppFooter,
+            AppControlSidebar
         }
 
     };
 </script>
 
-<style lang="sass" rel="stylesheet/scss">
-
-</style>
+<style></style>
