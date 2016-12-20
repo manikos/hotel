@@ -5,11 +5,10 @@
 </template>
 
 <script>
+//    import './assets/admin-lte/app'
     export default {};
 </script>
 
-<style>
-    /*@import "/static/admin-lte/css/bootstrap.css";*/
-    /*@import "/static/admin-lte/css/AdminLTE.css";*/
-    /*@import "/static/admin-lte/css/_all-skins.css";*/
+<style src="./assets/admin-lte/app.scss" lang="scss" rel="stylesheet/scss">
+
 </style>
