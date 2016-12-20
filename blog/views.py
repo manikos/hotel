@@ -13,10 +13,14 @@ def homepage(request):
     return render(request, 'base/base.html')
 
 
-class UserCreate(mixins.CreateModelMixin, generics.GenericAPIView):
-    permission_classes = (permissions.AllowAny, )
+class UserList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
+    authentication_classes = (JSONWebTokenAuthentication, )
+    permission_classes = (permissions.IsAuthenticated, )
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
