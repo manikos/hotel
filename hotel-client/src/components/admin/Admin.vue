@@ -23,6 +23,7 @@
             <section class="content">
                 <!-- Your Page Content Here -->
                 <!--this will change-->
+                <h3>This is from Admin {{authUser.name}}</h3>
                 <router-view></router-view>
             </section>
             <!-- /.content -->
@@ -43,6 +44,7 @@
     import AppSidebar from './Sidebar.vue';
     import AppFooter from './Footer.vue';
     import AppControlSidebar from './ControlSidebar.vue'
+    import store from './../../store'
     export default {
         name: 'admin',
         components: {
@@ -50,6 +52,9 @@
             AppHeader,
             AppFooter,
             AppControlSidebar
+        },
+        data() {
+            return store
         }
 
     };
