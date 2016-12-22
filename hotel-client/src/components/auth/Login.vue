@@ -16,7 +16,7 @@
             <div class="form-group">
                 <label for='username'>Password</label>
                 <input id="password"
-                       type="text"
+                       type="password"
                        class="form-control"
                        placeholder="Enter Password"
                        v-model="user.password"
@@ -66,7 +66,8 @@
 
                     })
                     .catch(response => {
-                        console.log(response);
+                        if (response.status === 0)
+                            alert('Python server is not running bro!')
                     });
             }
         }

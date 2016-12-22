@@ -52,12 +52,7 @@
                 The footer of the box
             </div><!-- box-footer -->
         </div><!-- /.box -->
-
-
-
-
-        <!--User Show Modal (init state: showModal = false)-->
-        <!--###############################################-->
+        <!-- User Show Modal -->
         <transition name="modal" mode="out-in">
             <!--TODO use a $watcher to watch which user was clicked-->
             <user-show-modal v-if="showModal"
@@ -66,10 +61,6 @@
             >
             </user-show-modal>
         </transition>
-
-        <!--User Edit Modal (init state: showModal = false)-->
-        <!--###############################################-->
-
     </div>
 </template>
 
@@ -83,25 +74,9 @@
         name: 'userManagement',
         data() {
             return {
+                //showModal: false,
                 showModal: false,
-                users: [
-                    {
-                        id: 1,
-                        username: 'irag',
-                        first_name: 'Iraklis',
-                        last_name: 'Georgas',
-                        email: 'irag@example.com',
-                        last_login: '21/12/2015'
-                    },
-                    {
-                        id: 2,
-                        username: 'nick',
-                        first_name: 'Nick',
-                        last_name: 'Mavrakis',
-                        email: 'nick@example.com',
-                        last_login: '20/12/2015'
-                    },
-                ],
+                users: [], // this will be populated upon created
                 userSelected: {}
             }
         },
@@ -114,13 +89,26 @@
             editUser(user) {
                 this.$router.push({name: 'userEdit', params: {id: user.id}});
                 /* TODO Alternatively we can make a "source of truth" to manage state:
-                    e.g: var store.userSelected = user
-                    in *editUser* component: data() {return {sharedState: store.userSelected}}
+                 e.g: var store.userSelected = user
+                 in *editUser* component: data() {return {sharedState: store.userSelected}}
                  */
             },
             deleteUser(id) {
                 // Sent DELETE ajax request to server
+            },
+            fetchUsers() {
+                this.$http.get('/users')
+                    .then(response => {
+                        this.users = response.body
+                    })
+                    .catch(response => {
+                        if (response.status === 401)
+                            alert('You are not logged in');
+                    });
             }
+        },
+        created() {
+            this.fetchUsers();
         }
     };
 </script>
