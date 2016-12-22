@@ -13,16 +13,21 @@ def homepage(request):
     return render(request, 'base/base.html')
 
 
-class UserCreate(mixins.CreateModelMixin, generics.GenericAPIView):
-    permission_classes = (permissions.AllowAny, )
+class UserCreate(mixins.CreateModelMixin, mixins.ListModelMixin, generics.GenericAPIView):
+    authentication_classes = (JSONWebTokenAuthentication, )
+    permission_classes = (permissions.IsAuthenticated, )
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
 
-class UserDetail(mixins.RetrieveModelMixin, generics.GenericAPIView):
+
+class UserDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin,
+                 mixins.DestroyModelMixin, generics.GenericAPIView):
     authentication_classes = (JSONWebTokenAuthentication, )
     permission_classes = (permissions.IsAuthenticated, )
     lookup_field = 'username'
@@ -38,3 +43,9 @@ class UserDetail(mixins.RetrieveModelMixin, generics.GenericAPIView):
 
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
+
+    def update(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+    def destroy(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
