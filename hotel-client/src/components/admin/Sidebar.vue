@@ -30,10 +30,10 @@
                 <li class="header">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active">
-                    <router-link to="/"><i class="fa fa-link"></i><span>Home</span></router-link>
+                    <router-link :to="{name: 'dash'}"><i class="fa fa-link"></i><span>Home</span></router-link>
                 </li>
                 <li>
-                    <router-link to="/user"><i class="fa fa-link"></i><span>Users</span></router-link>
+                    <router-link :to="{name: 'user'}"><i class="fa fa-link"></i><span>Users</span></router-link>
                 </li>
                 <!--<li class="treeview">-->
                     <!--<a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>-->

@@ -1,7 +1,13 @@
 const store = {
-    authUser: {
-        name: 'Maria',
-        surname: 'Farantouri'
+    state: {
+        authUser: {
+            firstname: '',
+            lastname: ''
+        }
+    },
+    // Methods to interact with state
+    updateName(name) {
+        this.state.authUser.lastname = name;
     }
 };
 

@@ -62,7 +62,7 @@
                         // Redirect user
                         // TODO: Is server sending redirect urls? what we do?
                         // TODO: redirect according to the role?
-                        this.$router.push('/dash')
+                        this.$router.push({name: 'dash'})
 
                     })
                     .catch(response => {

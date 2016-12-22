@@ -15,6 +15,9 @@ Vue.use(Auth);
 Vue.use(Element);
 Vue.use(VueResource);
 
+// Make an alias of store to access it from every Vue instance/component
+Vue.prototype.$store = store;
+
 // The root Vue instance
 new Vue({
     el: '#app',

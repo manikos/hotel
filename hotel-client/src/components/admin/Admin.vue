@@ -23,7 +23,7 @@
             <section class="content">
                 <!-- Your Page Content Here -->
                 <!--this will change-->
-                <h3>This is from Admin {{authUser.name}}</h3>
+                <h3>This is from Admin {{shared.state.authUser}}</h3>
                 <router-view></router-view>
             </section>
             <!-- /.content -->
@@ -39,7 +39,6 @@
 </template>
 
 <script>
-    //    import '../../assets/js/admin-app'
     import AppHeader from './Header.vue';
     import AppSidebar from './Sidebar.vue';
     import AppFooter from './Footer.vue';
@@ -54,7 +53,21 @@
             AppControlSidebar
         },
         data() {
-            return store
+            return {
+                shared: store
+            }
+        },
+        methods: {
+            // TODO make an ajax request to te server
+          fetchAuthUser() {
+              this.shared.state.authUser = {
+                  firstname: 'Nick',
+                  lastname: 'Mavrakis'
+              }
+          }
+        },
+        created() {
+            this.fetchAuthUser();
         }
 
     };
