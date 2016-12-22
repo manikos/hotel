@@ -8,6 +8,7 @@ import Element from "element-ui";
 import "element-ui/lib/theme-default/index.css";
 import Auth from "./plugins/Auth";
 import "./config";
+import store from "./store";
 
 // Use plugins
 Vue.use(Auth);
@@ -19,7 +20,8 @@ new Vue({
     el: '#app',
     router: Router,
     template: '<App/>',
-    components: {App}
+    components: {App},
+    data: store // our data object is now store
 });
 
 //
