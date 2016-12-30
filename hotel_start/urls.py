@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^verify-jwt/$', verify_jwt_token),
     url(r'^refresh-jwt/$', refresh_jwt_token),
 
-    url(r'^api/user/$', blog_views.UserList.as_view()),
+    url(r'^api/user/$', blog_views.UserCreate.as_view()),
     url(r'^users/(?P<username>\w+)/$', blog_views.UserDetail.as_view()),
 
 
