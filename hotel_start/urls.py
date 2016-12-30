@@ -33,14 +33,14 @@ from blog import views as blog_views
 urlpatterns = [
     url(r'^$', blog_views.homepage, name='homepage'),
 
-    url(r'^auth/$', obtain_jwt_token),
     url(r'^verify-jwt/$', verify_jwt_token),
     url(r'^refresh-jwt/$', refresh_jwt_token),
 
     # API
+    url(r'^api/auth/$', obtain_jwt_token),
     url(r'^api/docs/', blog_views.MySchema.as_view()),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     url(r'^api/user/$', blog_views.UserView.as_view()),
-    url(r'^api/user/(?P<username>\w+)/$', blog_views.UserDetail.as_view()),
+    url(r'^api/user/(?P<username>.*)/$', blog_views.UserDetail.as_view()),
 ]
