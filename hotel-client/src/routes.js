@@ -22,9 +22,9 @@ const routes = [
     // Admin routes
     {
         // path: '/admin', component: Admin, redirect: '/admin/dash',
-        path: '/admin', component: Admin, redirect: '/admin/dash',
+        path: '/admin', component: Admin, redirect: '/admin/dash', meta: {requiresAuth: true},
         children: [
-            {path: 'dash', name: 'dash' , component: Dash, meta: {requiresAuth: true}},
+            {path: 'dash', name: 'dash' , component: Dash},
             {path: 'user', name: 'user', component: UserIndex},
             // {path: 'user/:id', name: 'userShow', component: UserShow},
             {path: 'user/:id/edit', name: 'userEdit', component: UserEdit}
