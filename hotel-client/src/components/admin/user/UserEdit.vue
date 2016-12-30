@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: 'UserEdit',
+        name: 'userEdit',
 
         mounted() {
             //TODO: mae an ajax call to get :id user's data

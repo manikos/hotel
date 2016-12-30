@@ -8,18 +8,23 @@ import Element from "element-ui";
 import "element-ui/lib/theme-default/index.css";
 import Auth from "./plugins/Auth";
 import "./config";
+import store from "./store";
 
 // Use plugins
 Vue.use(Auth);
 Vue.use(Element);
 Vue.use(VueResource);
 
+// Make an alias of store to access it from every Vue instance/component
+Vue.prototype.$store = store;
+
 // The root Vue instance
 new Vue({
     el: '#app',
     router: Router,
     template: '<App/>',
-    components: {App}
+    components: {App},
+    data: store // our data object is now store
 });
 
 //

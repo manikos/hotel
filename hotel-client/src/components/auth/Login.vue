@@ -10,13 +10,13 @@
                        class="form-control"
                        placeholder="Enter Username"
                        v-model="user.username"
-                >`
+                >
             </div>
             <!--Password-->
             <div class="form-group">
                 <label for='username'>Password</label>
                 <input id="password"
-                       type="text"
+                       type="password"
                        class="form-control"
                        placeholder="Enter Password"
                        v-model="user.password"
@@ -43,7 +43,7 @@
 
     //
     export default {
-        name: 'Login',
+        name: 'login',
         data() {
             return {
                 user: {
@@ -62,17 +62,18 @@
                         // Redirect user
                         // TODO: Is server sending redirect urls? what we do?
                         // TODO: redirect according to the role?
-                        this.$router.push('/youareloggedin')
+                        this.$router.push({name: 'dash'})
 
                     })
                     .catch(response => {
-                        console.log(response);
+                        if (response.status === 0)
+                            alert('Python server is not running bro!')
                     });
             }
         }
     };
 </script>
 
-<style lang="sass" rel="stylesheet/scss">
+<style lang="scss" rel="stylesheet/scss">
 
 </style>
