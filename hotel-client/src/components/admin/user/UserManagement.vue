@@ -24,7 +24,7 @@
                         <td>{{user.first_name}}</td>
                         <td>{{user.last_name}}</td>
                         <td>{{user.email}}</td>
-                        <td>{{user.last_login}}</td>
+                        <td>{{Date(user.last_login)}}</td>
                         <td>
                             <button class="btn btn-flat btn-xs btn-primary"
                                     type="button"
@@ -52,45 +52,49 @@
             </div>
         </div>
 
-        <button id="show-modal" @click="showModal = true">Show Modal</button>
-
-        <vue-modal v-if="showModal" @close="showModal = false">
-            <!--<h2 slot="body">Haha</h2>-->
-        </vue-modal>
-
-        <button id="show-modal" @click="showUserInfo = true">Show Modal</button>
-
-        <user-info v-if="showUserInfo" @close="showUserInfo = false">
-            <!--<h2 slot="body">Haha</h2>-->
+        <!--This is the user info dialog-->
+        <user-info v-if="showUserInfo"
+                   @close="showUserInfo = false"
+                   :user="selectedUser"
+        >
         </user-info>
+
+        <!--This is the user info dialog-->
+        <user-edit v-if="showUserEdit"
+                   @close="showUserEdit = false"
+                   :user="selectedUser"
+        >
+        </user-edit>
 
     </div>
 </template>
 
 <script>
-    import VueModal from '../../shared/VueModal.vue';
-    import UserInfo from './UserShow.vue';
+    import UserInfo from './UserInfo.vue';
+    import UserEdit from './UserEdit.vue'
 
     export default {
         components: {
-            VueModal, UserInfo
+            UserInfo, UserEdit
         },
         name: 'UserManagement',
         data() {
             return {
-                showModal: false,
+                selectedUser: {}, // this will correspond to the user clicked
                 showUserInfo: false,
+                showUserEdit: false,
                 users: [], // this will be populated upon created
             }
         },
         methods: {
             showUser(user) {
-                //TODO Make an ajax request to fetch user ?
-                this.userSelected = user;
-                this.showModal = true;
+                this.selectedUser = user; //TODO use events and props
+                this.showUserInfo = true;
             },
             editUser(user) {
-                this.$router.push({name: 'userEdit', params: {id: user.id}});
+                this.selectedUser = user; //TODO use events and props
+                this.showUserEdit = true;
+//                this.$router.push({name: 'userEdit', params: {id: user.id}});
                 /* TODO Alternatively we can make a "source of truth" to manage state:
                  e.g: var store.userSelected = user
                  in *editUser* component: data() {return {sharedState: store.userSelected}}

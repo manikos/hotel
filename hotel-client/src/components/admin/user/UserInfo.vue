@@ -5,7 +5,7 @@
                 <div class="modal-container">
 
                     <div class="modal-header">
-                        <h2>Cool header</h2>
+                        <h3>{{user.username}}</h3>
                     </div>
 
                     <div class="modal-body">
@@ -30,7 +30,7 @@
 
 <script>
     export default {
-        name: 'UserShow',
+        name: 'UserInfo',
 
         props: ['user'],
         data() {
@@ -70,7 +70,7 @@
 
     .modal-header h3 {
         margin-top: 0;
-        color: #42b983;
+        color: #3C8DBC;
     }
 
     .modal-body {

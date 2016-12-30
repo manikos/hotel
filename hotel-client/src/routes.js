@@ -6,7 +6,7 @@ import Register from "./components/auth/Register.vue";
 import Login from "./components/auth/Login.vue";
 import Admin from "./components/admin/Admin.vue";
 import Dash from "./components/admin/dash/Dash.vue";
-import UserIndex from "./components/admin/user/UserIndex.vue";
+import UserIndex from "./components/admin/user/UserManagement.vue";
 import UserEdit from "./components/admin/user/UserEdit.vue";
 
 /**
