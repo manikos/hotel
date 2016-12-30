@@ -2,7 +2,7 @@ import coreapi
 
 my_schema = coreapi.Document(
     title='Hotel API',
-    url='https://testhotel.herokuapp.com/docs/',
+    url='/api/docs/',
     content={
         ##########################
         #          USER          #

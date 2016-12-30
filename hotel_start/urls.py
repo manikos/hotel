@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 
 from rest_framework import renderers
 from rest_framework.schemas import get_schema_view
@@ -39,6 +39,8 @@ urlpatterns = [
 
     # API
     url(r'^api/docs/', blog_views.MySchema.as_view()),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
     url(r'^api/user/$', blog_views.UserView.as_view()),
     url(r'^api/user/(?P<username>\w+)/$', blog_views.UserDetail.as_view()),
 ]

@@ -49,9 +49,6 @@ def get_secret(setting, secret=secrets):
 SECRET_KEY = get_secret('SECRET_KEY')
 
 
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -134,7 +131,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'el'
 
 TIME_ZONE = 'Europe/Athens'
 
@@ -190,7 +187,7 @@ MEDIA_ROOT = root('media_root')
 #     ),
 # }
 
-CORS_ORIGIN_ALLOW_ALL = True
+
 
 JWT_AUTH = {
     # 'JWT_ENCODE_HANDLER':
