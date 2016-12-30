@@ -5,22 +5,24 @@
                 <div class="modal-container">
 
                     <div class="modal-header">
-                        <h2>Cool header</h2>
+                        <slot name="header">
+                            default header
+                        </slot>
                     </div>
 
                     <div class="modal-body">
-                        <ul>
-                            <li v-for="item in user">{{item}}</li>
-                        </ul>
+                        <slot name="body">
+                            default body
+                        </slot>
                     </div>
 
                     <div class="modal-footer">
-                        <p>This is the best footer ever!!!</p>
-                        <button class="btn btn-default"
-                                @click="$emit('close')"
-                        >
-                            Close
-                        </button>
+                        <slot name="footer">
+                            default footer
+                            <button class="modal-default-button" @click="$emit('close')">
+                                OK
+                            </button>
+                        </slot>
                     </div>
                 </div>
             </div>
@@ -30,16 +32,12 @@
 
 <script>
     export default {
-        name: 'UserShow',
+        name: 'VueModal'
 
-        props: ['user'],
-        data() {
-            return {}
-        }
     };
 </script>
 
-<style lang="scss" rel="stylesheet/scss">
+<style>
     .modal-mask {
         position: fixed;
         z-index: 9998;
@@ -103,4 +101,5 @@
         -webkit-transform: scale(1.1);
         transform: scale(1.1);
     }
+
 </style>

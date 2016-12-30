@@ -1,10 +1,9 @@
 <template>
     <div>
-        <h2>Users Management</h2>
         <div class="box box-solid box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">User listing</h3>
-            </div><!-- /.box-header -->
+            </div>
             <div class="box-body">
                 <table class="table .table-condensed">
                     <thead>
@@ -47,37 +46,41 @@
                     </tr>
                     </tbody>
                 </table>
-            </div><!-- /.box-body -->
+            </div>
             <div class="box-footer">
-                The footer of the box
-            </div><!-- box-footer -->
-        </div><!-- /.box -->
-        <!-- User Show Modal -->
-        <transition name="modal" mode="out-in">
-            <!--TODO use a $watcher to watch which user was clicked-->
-            <user-show-modal v-if="showModal"
-                             @close="showModal = false"
-                             :user="userSelected"
-            >
-            </user-show-modal>
-        </transition>
+                There are {{users.length}} users total
+            </div>
+        </div>
+
+        <button id="show-modal" @click="showModal = true">Show Modal</button>
+
+        <vue-modal v-if="showModal" @close="showModal = false">
+            <!--<h2 slot="body">Haha</h2>-->
+        </vue-modal>
+
+        <button id="show-modal" @click="showUserInfo = true">Show Modal</button>
+
+        <user-info v-if="showUserInfo" @close="showUserInfo = false">
+            <!--<h2 slot="body">Haha</h2>-->
+        </user-info>
+
     </div>
 </template>
 
 <script>
-    import UserShowModal from './UserShow.vue';
+    import VueModal from '../../shared/VueModal.vue';
+    import UserInfo from './UserShow.vue';
 
     export default {
         components: {
-            UserShowModal
+            VueModal, UserInfo
         },
-        name: 'userManagement',
+        name: 'UserManagement',
         data() {
             return {
-                //showModal: false,
                 showModal: false,
+                showUserInfo: false,
                 users: [], // this will be populated upon created
-                userSelected: {}
             }
         },
         methods: {
@@ -97,7 +100,7 @@
                 // Sent DELETE ajax request to server
             },
             fetchUsers() {
-                this.$http.get('/users')
+                this.$http.get('/user')
                     .then(response => {
                         this.users = response.body
                     })
@@ -114,14 +117,5 @@
 </script>
 
 <style style lang="scss" rel="stylesheet/scss">
-    /*TODO @import or use it in App.vue*/
-    .modal-enter-active,
-    .modal-leave-active {
-        transition: opacity .2s ease;
-    }
 
-    .modal-enter,
-    .modal-leave-active {
-        opacity: 0;
-    }
 </style>
