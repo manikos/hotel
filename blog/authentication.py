@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
+from django.http import Http404
 
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
-from rest_framework import exceptions
 
 
 class SwaggerPassAuthentication(JSONWebTokenAuthentication):
@@ -13,7 +13,7 @@ class SwaggerPassAuthentication(JSONWebTokenAuthentication):
                 try:
                     user = User.objects.get(username=username)
                 except User.DoesNotExist:
-                    return None
+                    raise Http404
                 else:
                     return user, None
             user = User.objects.filter().first()

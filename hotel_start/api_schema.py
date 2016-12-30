@@ -39,14 +39,14 @@ my_schema = coreapi.Document(
                     description='User\'s email'
                 ),
                 coreapi.Field(
-                    name='First name',
+                    name='first_name',
                     required=False,
                     location='form',
                     type='string',
                     description='User\'s first name'
                 ),
                 coreapi.Field(
-                    name='Last name',
+                    name='last_name',
                     required=False,
                     location='form',
                     type='string',
@@ -75,8 +75,8 @@ my_schema = coreapi.Document(
             fields=[
                 coreapi.Field(
                     name='username',
-                    required=False,
-                    location='form',
+                    required=True,
+                    location='path',
                     type='string',
                     description='User\'s username'
                 ),
@@ -95,14 +95,14 @@ my_schema = coreapi.Document(
                     description='User\'s email'
                 ),
                 coreapi.Field(
-                    name='First name',
+                    name='first_name',
                     required=False,
                     location='form',
                     type='string',
                     description='User\'s first name'
                 ),
                 coreapi.Field(
-                    name='Last name',
+                    name='last_name',
                     required=False,
                     location='form',
                     type='string',
