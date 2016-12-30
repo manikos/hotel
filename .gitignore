@@ -35,7 +35,6 @@ hotel-client/npm-debug.log
 ##################
 */settings/secret.json
 */settings/secret.secret
-npm-debug.log
 .sass-cache
 
 # OS generated files #
@@ -44,5 +43,4 @@ npm-debug.log
 ehthumbs.db
 Icon
 Thumbs.db
-*~
 
