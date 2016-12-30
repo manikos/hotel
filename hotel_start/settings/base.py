@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
+    'rest_framework_swagger',
     'blog.apps.BlogConfig',
     'my_auth.apps.MyAuthConfig',
 
