@@ -9,6 +9,6 @@
     export default {};
 </script>
 
-<style src="./assets/admin-lte/app.scss" lang="scss" rel="stylesheet/scss">
+<style>
 
 </style>

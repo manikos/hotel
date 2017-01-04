@@ -5,18 +5,58 @@
                 <div class="modal-container">
 
                     <div class="modal-header">
-                        <h3>{{user.username}}</h3>
+                        <h3>{{user.first_name}} {{user.last_name}}</h3>
                     </div>
 
                     <div class="modal-body">
-                        <ul>
-                            <li v-for="item in user">{{item}}</li>
-                        </ul>
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-2">
+                                <div class="box box-warning">
+                                    <div class="box-body">
+
+
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="someId">Username</label>
+                                                    <input type="text" id="someId" class="form-control"
+                                                           v-model="user.username">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="someOtherId">Email</label>
+                                                    <input type="text" id="someOtherId" class="form-control"
+                                                           v-model="user.email">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="someOtherId">First Name</label>
+                                                    <input type="text" id="someOtherId" class="form-control"
+                                                           v-model="user.first_name">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="someOtherId">Last Name</label>
+                                                    <input type="text" id="someOtherId" class="form-control"
+                                                           v-model="user.last_name">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="modal-footer">
-                        <p>EDITTTTT</p>
-                        <button class="btn btn-default"
+                        <!--FIXME when emit close then update parent state (maybe use store as well...)-->
+                        <button class="btn btn-warning"
                                 @click="$emit('close')"
                         >
                             Close
@@ -30,16 +70,21 @@
 
 <script>
     export default {
-        name: 'UserInfo',
+        name: 'UserEdit',
 
-        props: ['user'],
+        props: ['selectedUser'],
         data() {
-            return {}
+            return {
+                user: {}
+            }
+        },
+        mounted() {
+            this.user = this.selectedUser;
         }
     };
 </script>
 
-<style lang="scss" rel="stylesheet/scss">
+<style lang="scss" rel="stylesheet/scss" scoped>
     .modal-mask {
         position: fixed;
         z-index: 9998;
@@ -47,7 +92,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, .5);
+        background-color: rgba(0, 0, 0, .8);
         display: table;
         transition: opacity .3s ease;
     }
@@ -58,27 +103,30 @@
     }
 
     .modal-container {
-        width: 500px;
+        width: 600px;
         margin: 0px auto;
         padding: 20px 30px;
-        background-color: #ECF0F5;
+        background-color: #ECF0F5; //the color of adminLTE background
         border-radius: 2px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
         transition: all .3s ease;
         font-family: Helvetica, Arial, sans-serif;
     }
 
-    .modal-header h3 {
+    .modal-header {
+        border: 0px;
+        margin: 0px;
+        padding: 0px;
         margin-top: 0;
-        color: #3C8DBC;
+        color: #E08E0B;
     }
 
     .modal-body {
-        margin: 20px 0;
+        margin: 10px 0;
     }
 
-    .modal-default-button {
-        float: right;
+    .modal-footer {
+        border: 0px;
     }
 
     /*

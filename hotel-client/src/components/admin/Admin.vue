@@ -1,76 +1,94 @@
 <template>
-    <div>
-        <!-- Main Header -->
-        <app-header></app-header>
-
-        <!-- Left side column. contains the logo and sidebar -->
-        <app-sidebar></app-sidebar>
-
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <!--<section class="content-header">-->
-                <!--<h1>-->
-                    <!--Διαχείριση Χρηστών-->
-                    <!--<small>Optional description</small>-->
-                <!--</h1>-->
-                <!--<ol class="breadcrumb">-->
-                    <!--<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>-->
-                    <!--<li class="active">Here</li>-->
-                <!--</ol>-->
-            <!--</section>-->
-            <!-- Main content -->
-            <section class="content">
-                <!-- Your Page Content Here -->
-                <!--this will change-->
-                <h3>This is from Admin {{shared.state.authUser}}</h3>
-                <router-view></router-view>
-            </section>
-            <!-- /.content -->
-        </div>
-
-        <!-- Main Footer -->
-        <app-footer></app-footer>
-
-        <!-- Control Sidebar -->
-        <app-control-sidebar></app-control-sidebar>
-
+    <div id="app">
+        <!--<nprogress-container></nprogress-container>-->
+        <nav-bar :show="true"></nav-bar>
+        <side-bar :show="true"></side-bar>
+        <app-main></app-main>
+        <footer-bar></footer-bar>
     </div>
 </template>
 
 <script>
-    import AppHeader from './Header.vue';
-    import AppSidebar from './Sidebar.vue';
-    import AppFooter from './Footer.vue';
-    import AppControlSidebar from './ControlSidebar.vue'
-    import store from './../../store'
-    export default {
-        name: 'admin',
-        components: {
-            AppSidebar,
-            AppHeader,
-            AppFooter,
-            AppControlSidebar
-        },
-        data() {
-            return {
-                shared: store
-            }
-        },
-        methods: {
-            // TODO make an ajax request to te server
-          fetchAuthUser() {
-              this.shared.state.authUser = {
-                  firstname: 'Nick',
-                  lastname: 'Mavrakis'
-              }
-          }
-        },
-        created() {
-            this.fetchAuthUser();
-        }
+    //    import NprogressContainer from 'vue-nprogress/src/NprogressContainer'
+    import NavBar from './layout/NavBar.vue'
+    import SideBar from './layout/SideBar.vue'
+    import AppMain from './layout/AppMain.vue'
+    import FooterBar from './layout/FooterBar.vue'
 
-    };
+    export default {
+        components: {
+            NavBar,
+            SideBar,
+            AppMain,
+            FooterBar,
+//            NprogressContainer
+        },
+
+//        beforeMount () {
+//            const {body} = document;
+//            const WIDTH = 768;
+//            const RATIO = 3;
+//
+//            const handler = () => {
+//                if (!document.hidden) {
+//                    let rect = body.getBoundingClientRect();
+//                    let isMobile = rect.width - RATIO < WIDTH;
+//                    this.toggleDevice(isMobile ? 'mobile' : 'other');
+//                    this.toggleSidebar(!isMobile)
+//                }
+//            };
+//
+//            document.addEventListener('visibilitychange', handler);
+//            window.addEventListener('DOMContentLoaded', handler);
+//            window.addEventListener('resize', handler);
+//        },
+//
+//        computed: mapGetters({
+//            sidebar: 'sidebar'
+//        }),
+//
+//        methods: mapActions([
+//            'toggleDevice',
+//            'toggleSidebar'
+//        ])
+    }
 </script>
 
-<style></style>
+<style lang="scss" rel="stylesheet/scss">
+    //@import '~animate.css';
+
+    .animated {
+        animation-duration: .377s;
+    }
+
+    @import '~bulma';
+
+    //@import '~wysiwyg.css/wysiwyg.sass';
+
+    //$fa-font-path: '~font-awesome/fonts/';
+    // @import '~font-awesome/scss/font-awesome';
+
+    // .nprogress-container {
+    //    position: fixed !important;
+    //    width: 100%;
+    //      height: 50px;
+    //      z-index: 2048;
+    //     pointer-events: none;
+
+    //    #nprogress {
+    //        $color: #48e79a;
+
+    //       .bar {
+    //            background: $color;
+    //     }
+    //         .peg {
+    //              box-shadow: 0 0 10px $color, 0 0 5px $color;
+    //           }
+    //
+    //           .spinner-icon {
+    //              border-top-color: $color;
+    //               border-left-color: $color;
+    //          }
+    //      }
+    //   }
+</style>

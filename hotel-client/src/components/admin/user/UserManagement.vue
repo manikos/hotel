@@ -62,7 +62,7 @@
         <!--This is the user info dialog-->
         <user-edit v-if="showUserEdit"
                    @close="showUserEdit = false"
-                   :user="selectedUser"
+                   :selectedUser="selectedUser"
         >
         </user-edit>
 
