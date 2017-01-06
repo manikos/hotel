@@ -66,17 +66,27 @@
         >
         </user-edit>
 
+        <div class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box">
+                    Lorem ipsum dolor sit amet, .
+                </div>
+            </div>
+            <button class="modal-close"></button>
+        </div>
     </div>
 </template>
 
 <script>
-    import UserInfo from './UserInfo.vue';
-    import UserEdit from './UserEdit.vue'
+//    import UserInfo from './UserInfo.vue';
+//    import UserEdit from './UserEdit.vue';
 
     export default {
-        components: {
-            UserInfo, UserEdit
-        },
+//        components: {
+//            UserInfo,
+//            UserEdit,
+//        },
         name: 'UserManagement',
         data() {
             return {

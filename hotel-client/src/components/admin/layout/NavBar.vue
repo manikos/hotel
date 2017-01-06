@@ -1,7 +1,6 @@
 <template>
-    <section class="hero is-bold app-navbar animated" :class="{ slideInDown: show, slideOutDown: !show }">
+    <section class="hero is-primary app-navbar animated" :class="{ slideInDown: show, slideOutDown: !show }">
         <div class="hero-head">
-
             <nav class="nav">
                 <div class="nav-left">
                     <!--Mobile Hamburger icon-->
@@ -14,10 +13,10 @@
                     <a class="nav-item hero-brand" href="/">The sexy Hotel!
                         <!--<img src="~assets/logo.svg" :alt="pkginfo.description">-->
                         <!--<tooltip :label="'v' + pkginfo.version" placement="right" type="success" size="small"-->
-                                 <!--:no-animate="true" :always="true" :rounded="true">-->
-                            <!--<div class="is-hidden-mobile">-->
-                                <!--<span class="vue">Vue</span><strong class="admin">Admin</strong>-->
-                            <!--</div>-->
+                        <!--:no-animate="true" :always="true" :rounded="true">-->
+                        <!--<div class="is-hidden-mobile">-->
+                        <!--<span class="vue">Vue</span><strong class="admin">Admin</strong>-->
+                        <!--</div>-->
                         <!--</tooltip>-->
                     </a>
                 </div>
@@ -35,8 +34,8 @@
 </template>
 
 <script>
-//    import Tooltip from 'vue-bulma-tooltip'
-//    import {mapGetters, mapActions} from 'vuex'
+    //    import Tooltip from 'vue-bulma-tooltip'
+    //    import {mapGetters, mapActions} from 'vuex'
 
     export default {
 
@@ -83,13 +82,13 @@
         }
     }
 
-    .hero-brand {
-        .vue {
-            margin-left: 10px;
-            color: #36AC70;
-        }
-        .admin {
-            color: #28374B;
-        }
-    }
+    //    .hero-brand {
+    //        .vue {
+    //           margin-left: 10px;
+    //          color: #36AC70;
+    //     }
+    //    .admin {
+    //       color: #28374B;
+    //       }
+    //   }
 </style>

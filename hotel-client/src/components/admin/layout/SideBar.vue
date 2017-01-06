@@ -5,7 +5,7 @@
         </p>
         <!-- Sidebar Menu -->
         <ul class="menu-list">
-            <li class="header">HEADER</li>
+            <li class="header">INFO</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="active">
                 <router-link :to="{name: 'dash'}"><i class="fa fa-link"></i><span>Home</span></router-link>
@@ -65,19 +65,19 @@
             }
         },
 
-        mounted () {
-            let route = this.$route
-            if (route.name) {
-                this.isReady = true
-                this.shouldExpandMatchItem(route)
-            }
-        },
+//        mounted () {
+//            let route = this.$route
+//            if (route.name) {
+//                this.isReady = true
+//                this.shouldExpandMatchItem(route)
+//            }
+//        },
 
 //        computed: mapGetters({
 //            menu: 'menuitems'
 //        }),
 //
-        methods: {
+//        methods: {
 //            ...mapActions([
 //                'expandMenu'
 //            ]),
@@ -85,61 +85,61 @@
 //            isExpanded (item) {
 //                return item.meta.expanded
 //            },
+//
+//            toggle (index, item) {
+//                this.expandMenu({
+//                    index: index,
+//                    expanded: !item.meta.expanded
+//                })
+//            },
+//
+//            shouldExpandMatchItem (route) {
+//                let matched = route.matched
+//                let lastMatched = matched[matched.length - 1]
+//                let parent = lastMatched.parent || lastMatched
+//                const isParent = parent === lastMatched
+//
+//                if (isParent) {
+//                    const p = this.findParentFromMenu(route)
+//                    if (p) {
+//                        parent = p
+//                    }
+//                }
+//
+//                if ('expanded' in parent.meta && !isParent) {
+//                    this.expandMenu({
+//                        item: parent,
+//                        expanded: true
+//                    })
+//                }
+//            },
+//
+//            generatePath (item, subItem) {
+//                return `${item.component ? item.path + '/' : ''}${subItem.path}`
+//            },
+//
+//            findParentFromMenu (route) {
+//                const menu = this.menu
+//                for (let i = 0, l = menu.length; i < l; i++) {
+//                    const item = menu[i]
+//                    const k = item.children && item.children.length
+//                    if (k) {
+//                        for (let j = 0; j < k; j++) {
+//                            if (item.children[j].name === route.name) {
+//                                return item
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        },
 
-            toggle (index, item) {
-                this.expandMenu({
-                    index: index,
-                    expanded: !item.meta.expanded
-                })
-            },
-
-            shouldExpandMatchItem (route) {
-                let matched = route.matched
-                let lastMatched = matched[matched.length - 1]
-                let parent = lastMatched.parent || lastMatched
-                const isParent = parent === lastMatched
-
-                if (isParent) {
-                    const p = this.findParentFromMenu(route)
-                    if (p) {
-                        parent = p
-                    }
-                }
-
-                if ('expanded' in parent.meta && !isParent) {
-                    this.expandMenu({
-                        item: parent,
-                        expanded: true
-                    })
-                }
-            },
-
-            generatePath (item, subItem) {
-                return `${item.component ? item.path + '/' : ''}${subItem.path}`
-            },
-
-            findParentFromMenu (route) {
-                const menu = this.menu
-                for (let i = 0, l = menu.length; i < l; i++) {
-                    const item = menu[i]
-                    const k = item.children && item.children.length
-                    if (k) {
-                        for (let j = 0; j < k; j++) {
-                            if (item.children[j].name === route.name) {
-                                return item
-                            }
-                        }
-                    }
-                }
-            }
-        },
-
-        watch: {
-            $route (route) {
-                this.isReady = true
-                this.shouldExpandMatchItem(route)
-            }
-        }
+//        watch: {
+//            $route (route) {
+//                this.isReady = true
+//                this.shouldExpandMatchItem(route)
+//            }
+//        }
 
     }
 </script>

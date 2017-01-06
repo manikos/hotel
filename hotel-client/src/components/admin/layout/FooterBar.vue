@@ -2,24 +2,16 @@
     <footer class="footer">
         <div class="container">
             <div class="content has-text-centered">
-                <p class="social">
-                    <a :href="'https://github.com/'">
-            <span class="icon">
-              <i class="fa fa-github"></i>
-            </span>
-                    </a>
-                    <a href="https://twitter.com/_fundon">
-            <span class="icon">
-              <i class="fa fa-twitter"></i>
-            </span>
-                    </a>
+                <p>
+                    <strong>Bulma</strong> by <a href="http://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+                    <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+                    is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
                 </p>
                 <p>
-                    <span class="icon"><i class="fa fa-code"></i></span> with <span class="icon">
-                    <i class="fa fa-heart"></i></span> by <a href="https://github.com/fundon">fundon</a>.
+                    <a class="icon" href="https://github.com/jgthms/bulma">
+                        <i class="fa fa-github"></i>
+                    </a>
                 </p>
-                <!--<p>Code licensed under <a :href="'https://github.com/' + repository + '/blob/master/LICENSE'">{{ license-->
-                <!--}}</a>.</p>-->
             </div>
         </div>
     </footer>

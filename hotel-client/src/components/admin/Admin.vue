@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div>
         <!--<nprogress-container></nprogress-container>-->
         <nav-bar :show="true"></nav-bar>
         <side-bar :show="true"></side-bar>
@@ -23,7 +23,6 @@
             FooterBar,
 //            NprogressContainer
         },
-
 //        beforeMount () {
 //            const {body} = document;
 //            const WIDTH = 768;
@@ -55,19 +54,16 @@
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
-    //@import '~animate.css';
+    @import '~bulma';
+    @import '~animate.css';
+    $fa-font-path: '~font-awesome/fonts/';
+    @import '~font-awesome/scss/font-awesome';
 
     .animated {
         animation-duration: .377s;
     }
 
-    @import '~bulma';
-
     //@import '~wysiwyg.css/wysiwyg.sass';
-
-    //$fa-font-path: '~font-awesome/fonts/';
-    // @import '~font-awesome/scss/font-awesome';
-
     // .nprogress-container {
     //    position: fixed !important;
     //    width: 100%;
