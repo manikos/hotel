@@ -10,5 +10,12 @@
 </script>
 
 <style>
+    body, html {
+        height: 100%;
+    }
+
+    body {
+        background: whitesmoke;
+    }
 
 </style>

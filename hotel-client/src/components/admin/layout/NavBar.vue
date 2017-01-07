@@ -1,32 +1,32 @@
 <template>
-    <section class="hero is-primary app-navbar animated" :class="{ slideInDown: show, slideOutDown: !show }">
+    <section class="hero app-navbar animated" :class="{ slideInDown: show, slideOutDown: !show }">
         <div class="hero-head">
             <nav class="nav">
                 <div class="nav-left">
-                    <!--Mobile Hamburger icon-->
+                    <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+                    <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
                     <a class="nav-item is-hidden-tablet" @click="toggleSidebar(!sidebar.opened)">
                         <i class="fa fa-bars" aria-hidden="true"></i>
                     </a>
-                    <!--/Mobile Hamburger Icon-->
                 </div>
                 <div class="nav-center">
-                    <a class="nav-item hero-brand" href="/">The sexy Hotel!
-                        <!--<img src="~assets/logo.svg" :alt="pkginfo.description">-->
-                        <!--<tooltip :label="'v' + pkginfo.version" placement="right" type="success" size="small"-->
-                        <!--:no-animate="true" :always="true" :rounded="true">-->
-                        <!--<div class="is-hidden-mobile">-->
-                        <!--<span class="vue">Vue</span><strong class="admin">Admin</strong>-->
-                        <!--</div>-->
-                        <!--</tooltip>-->
-                    </a>
+                    <!--<div class="container has-text-centered">-->
+                    <figure class="image is-48x48">
+                        <img src="../../../../static/logo.jpg"/>
+                    </figure>
+                    <!--</div>-->
                 </div>
                 <div class="nav-right is-flex">
-                    <a class="nav-item">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                    </a>
-                    <a class="nav-item">
-                        <i class="fa fa-gear" aria-hidden="true"></i>
-                    </a>
+                    <div class="nav-item">
+                        <span class="icon is-medium">
+                            <i class="fa fa-user"></i>
+                        </span>
+                    </div>
+                    <div class="nav-item">
+                        <span class="icon is-medium">
+                          <i class="fa fa-gear"></i>
+                        </span>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -46,6 +46,11 @@
         props: {
             show: Boolean
         },
+        methods: {
+            log() {
+                console.log('kjdjksdhf')
+            }
+        }
 
 //        computed: mapGetters({
 //            pkginfo: 'pkg',
@@ -67,28 +72,20 @@
         z-index: 1024;
         box-shadow: 0 2px 3px rgba(17, 17, 17, 0.1), 0 0 0 1px rgba(17, 17, 17, 0.1);
 
-        .container {
-            margin: auto 10px;
-        }
-
-        .nav-right {
-            align-items: stretch;
-            align-items: stretch;
-            flex: 1;
-            justify-content: flex-end;
-            overflow: hidden;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
     }
 
-    //    .hero-brand {
-    //        .vue {
-    //           margin-left: 10px;
-    //          color: #36AC70;
-    //     }
-    //    .admin {
-    //       color: #28374B;
-    //       }
-    //   }
+    // TODO: declare colors globally
+    .has-text-purple {
+        color: #b86bff;
+    }
+    .has-text-green {
+        margin-left: 10px;
+        color: #36AC70;
+    }
+
+    .has-text-dark-blue {
+        color: #28374B;
+    }
+
 </style>
+
