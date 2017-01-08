@@ -1,15 +1,15 @@
 <template>
     <div>
         <div class="box">
-            <table class="table .table-condensed">
+            <table class="table">
                 <thead>
                 <tr>
                     <th>id</th>
-                    <th>username</th>
-                    <th>first name</th>
-                    <th>last name</th>
-                    <th>email</th>
-                    <th>last_login</th>
+                    <th>Username</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Last Login</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -20,23 +20,32 @@
                     <td>{{user.first_name}}</td>
                     <td>{{user.last_name}}</td>
                     <td>{{user.email}}</td>
-                    <td>{{Date(user.last_login)}}</td>
+                    <!--TODO: FORMAT date-->
+                    <td>{{user.id}}</td>
                     <td>
-                        <button class="btn btn-flat btn-xs btn-primary"
-                                type="button"
+                        <button class="button is-info is-small"
                                 @click="showUser(user)"
                         >
-                            <i class="fa fa-eye"></i> Show
+                            <span class="icon is-small">
+                                <i class="fa fa-eye"></i>
+                            </span>
+                            <span>Show</span>
                         </button>
-                        <button class="btn btn-flat btn-xs btn-warning"
+                        <button class="button is-primary is-small"
                                 @click="editUser(user)"
                         >
-                            <i class="fa fa-pencil-square-o"></i> Edit
+                            <span class="icon is-small">
+                                <i class="fa fa-edit"></i>
+                            </span>
+                            <span>Edit</span>
                         </button>
-                        <button class="btn btn-flat btn-xs btn-danger"
-                                @click="deleteUser"
+                        <button class="button is-danger is-small"
+                                @click="deleteUser(user)"
                         >
-                            <i class="fa fa-trash"></i> Delete
+                            <span class="icon is-small">
+                                <i class="fa fa-times"></i>
+                            </span>
+                            <span>Delete</span>
                         </button>
                     </td>
                 </tr>
@@ -58,27 +67,20 @@
         >
         </user-edit>
 
-        <div class="modal">
-            <div class="modal-background"></div>
-            <div class="modal-content">
-                <div class="box">
-                    Lorem ipsum dolor sit amet, .
-                </div>
-            </div>
-            <button class="modal-close"></button>
-        </div>
+
     </div>
 </template>
 
 <script>
-    //    import UserInfo from './UserInfo.vue';
+    //TODO: consinder using a global modal UI component <modal><user-info></user-info></modal>
+        import UserInfo from './UserInfo.vue';
     //    import UserEdit from './UserEdit.vue';
 
     export default {
-//        components: {
-//            UserInfo,
+        components: {
+            UserInfo,
 //            UserEdit,
-//        },
+        },
         name: 'UserManagement',
         data() {
             return {

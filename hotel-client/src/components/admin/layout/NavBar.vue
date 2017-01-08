@@ -19,7 +19,7 @@
                 <div class="nav-right is-flex">
                     <div class="nav-item">
                         <span class="icon is-medium">
-                            <i class="fa fa-user"></i>
+                            <i class="fa fa-user-o"></i>
                         </span>
                     </div>
                     <div class="nav-item">

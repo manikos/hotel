@@ -16,6 +16,7 @@
     import FooterBar from './layout/FooterBar.vue'
 
     export default {
+        name: 'Admin',
         components: {
             NavBar,
             SideBar,
@@ -60,7 +61,7 @@
     @import '~font-awesome/scss/font-awesome';
 
     .animated {
-        animation-duration: .377s;
+        animation-duration: .377s; //TODO: make it global
     }
 
     //@import '~wysiwyg.css/wysiwyg.sass';
