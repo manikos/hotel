@@ -108,9 +108,9 @@
                 // Sent DELETE ajax request to server
             },
             fetchUsers() {
-                this.$http.get('/user')
+                this.$http.get('/user/')
                     .then(response => {
-                        this.users = response.body
+                        this.users = response.data
                     })
                     .catch(response => {
                         if (response.status === 401)

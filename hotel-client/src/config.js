@@ -1,11 +1,9 @@
-// THIS FILE CONTAINS THE CONFIGURATION OPTIONS FOR THE WHOLE PROJECT
-// IT CONFIGURES THE *VUE INSTANCE* SO IT APPLIES GLOBALLY
-// TODO: consider using a better way for using Vue instance (if importing no caching)....
 import Vue from "vue";
-import VueResource from "vue-resource";
-import AuthPlugin from "./plugins/Auth"; // Import also Auth plugin to use it with interceptors
-Vue.use(VueResource);
+import AuthPlugin from "./plugins/Auth";
+// import VueResource from "vue-resource";
+
 Vue.use(AuthPlugin);
+// Vue.use(VueResource);
 
 /**
  * HTTP REQUEST / RESPONSE CONFIG
@@ -23,7 +21,7 @@ Vue.http.interceptors.push((request, next) => {
      */
     // We assume that if the $URL$ starts with '/' we are making a call to LOCAL server
     if (request.url[0] === '/') {
-        // ... so we are pre-pending the local API URL
+        // ... so we are pre-pending the local API URL + the trailing slash '/'
         request.url = process.env.API + request.url + '/';
     }
     // Otherwise, if the URL starts with http(s)://

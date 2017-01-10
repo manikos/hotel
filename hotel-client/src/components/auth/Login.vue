@@ -75,10 +75,10 @@
         methods: {
             // TODO consider moving method to `Auth` plugin
             login() {
-                this.$http.post('/auth', this.user)
+                this.$http.post('/auth/', this.user)
                     .then(response => {
                         // Store the received JWT + expiration date
-                        this.$auth.setToken(response.body.token, Date.now() + 14400000);
+                        this.$auth.setToken(response.data.token, Date.now() + 14400000);
                         // Redirect user
                         // TODO: Is server sending redirect urls? what we do?
                         // TODO: redirect according to the role?

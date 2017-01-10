@@ -11,11 +11,11 @@
   "dependencies": {
     "admin-lte": "^2.3.8",
     "animate.css": "^3.5.2",
+    "axios": "^0.15.3",
     "bulma": "^0.3.0",
     "element-ui": "^1.1.2",
     "font-awesome": "^4.7.0",
     "vue": "^2.1.0",
-    "vue-resource": "^1.0.3",
     "vue-router": "^2.1.1"
   },
   "devDependencies": {
