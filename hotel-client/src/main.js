@@ -22,7 +22,7 @@ let axios = Axios.create({
 });
 
 axios.interceptors.request.use(config => {
-    let AUTH_TOKEN = localStorage.getItem('authToken');
+    let AUTH_TOKEN = Vue.auth.getToken();
     console.log(AUTH_TOKEN);
     config.headers['Authorization'] = `JWT ${AUTH_TOKEN}`;
     return config
