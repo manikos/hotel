@@ -110,9 +110,11 @@
             fetchUsers() {
                 this.$http.get('/user/')
                     .then(response => {
+                        console.log(response);
                         this.users = response.data
                     })
                     .catch(response => {
+                        console.log(response);
                         if (response.status === 401)
                             alert('You are not logged in');
                     });

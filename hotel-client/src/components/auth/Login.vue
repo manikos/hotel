@@ -75,6 +75,7 @@
         methods: {
             // TODO consider moving method to `Auth` plugin
             login() {
+                console.log('υπάρχω');
                 this.$http.post('/auth/', this.user)
                     .then(response => {
                         // Store the received JWT + expiration date
