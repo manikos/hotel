@@ -9,7 +9,6 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "admin-lte": "^2.3.8",
     "animate.css": "^3.5.2",
     "axios": "^0.15.3",
     "bulma": "^0.3.0",
