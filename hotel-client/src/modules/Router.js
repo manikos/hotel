@@ -39,7 +39,8 @@ const routes = [
  * Create router instance for client app
  */
 const router = new VueRouter({
-    routes
+    routes,
+    linkActiveClass: 'is-active'
 });
 
 /**
