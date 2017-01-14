@@ -1,11 +1,8 @@
 /**
- * This is a custom plugin that handles JWT authentication
- *
- * TODO: See https://github.com/auth0-blog/vue-jwt-authentication
+ * Authentication module
+ * @type {{setToken: auth.setToken, destroyToken: auth.destroyToken, getToken: auth.getToken, loggedIn: auth.loggedIn}}
  */
-
-
-const AuthPlugin = {
+const auth = {
     setToken: function (token, expiration) {
         localStorage.setItem('authToken', token);
         localStorage.setItem('authTokenExpiration', expiration);
@@ -40,14 +37,4 @@ const AuthPlugin = {
 };
 
 // Export plugin
-export default function(Vue) {
-    Vue.auth = AuthPlugin;
-
-    Object.defineProperties(Vue.prototype, {
-        $auth: {
-            get: function() {
-                return Vue.auth;
-            }
-        }
-    })
-}
+export default auth

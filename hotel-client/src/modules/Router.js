@@ -1,36 +1,31 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import AuthPlugin from "./plugins/Auth";
-import Auth from "./components/auth/Auth.vue";
-import Register from "./components/auth/Register.vue";
-import Login from "./components/auth/Login.vue";
-import Admin from "./components/admin/Admin.vue";
-import Dash from "./components/admin/dash/Dash.vue";
-import UserIndex from "./components/admin/user/UserManagement.vue";
-import UserEdit from "./components/admin/user/UserEdit.vue";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import AuthPlugin from '../modules/Auth';
+import Auth from '../components/auth/Auth.vue';
+import Register from '../components/auth/Register.vue';
+import Login from '../components/auth/Login.vue';
+import Admin from '../components/admin/Admin.vue';
+import Dash from '../components/admin/dash/Dash.vue';
+import UserIndex from '../components/admin/user/UserManagement.vue';
+import UserEdit from '../components/admin/user/UserEdit.vue';
 
-/**
- * Register required plugins
- */
 Vue.use(VueRouter);
-Vue.use(AuthPlugin);
 
 /**
- * Define routes
+ * Routes for client app
+ * @type {[*]}
  */
 const routes = [
-    // Admin routes
+    // # Admin routes #
     {
-        // path: '/admin', component: Admin, redirect: '/admin/dash',
         path: '/admin', component: Admin, redirect: '/admin/dash', meta: {requiresAuth: true} ,
         children: [
             {path: 'dash', name: 'dash' , component: Dash},
             {path: 'user', name: 'user', component: UserIndex},
-            // {path: 'user/:id', name: 'userShow', component: UserShow},
             {path: 'user/:id/edit', name: 'userEdit', component: UserEdit}
         ]
     },
-    // Auth routes
+    // # Auth routes #
     {
         path: '/auth', component: Auth, redirect: '/auth/login', //redirect to prevent direct access to Auth component
         children: [
@@ -41,24 +36,23 @@ const routes = [
 ];
 
 /**
- * Create router instance
+ * Create router instance for client app
  */
 const router = new VueRouter({
-    routes // short for routes: routes
+    routes
 });
 
 /**
  * Define navigation guards
  */
-
-// Guard to prevent a user from accessing Login component after she has successfully logged in
+// Prevent a user from accessing Login component after she has successfully logged in
 router.beforeEach((to, from, next) => {
     // If user is logged in and request routes that requires meta `guest`
-    if (Vue.auth.loggedIn() && to.matched.some(record => record.meta.guest)) {
+    if (AuthPlugin.loggedIn() && to.matched.some(record => record.meta.guest)) {
         // we redirect the logged-in user to profile
         next({path: '/admin'});
         // If user is not logged-in and route requiresAuthorize == true
-    } else if (!Vue.auth.loggedIn() && to.matched.some(record => record.meta.requiresAuth)) {
+    } else if (!AuthPlugin.loggedIn() && to.matched.some(record => record.meta.requiresAuth)) {
         next({path: '/auth/login'});
         // next();
     } else {

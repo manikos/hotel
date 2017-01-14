@@ -1,3 +1,7 @@
+/**
+ * Shared state
+ * @type {{state: {authUser: {firstname: string, lastname: string}}, updateName: ((name))}}
+ */
 const store = {
     state: {
         authUser: {
