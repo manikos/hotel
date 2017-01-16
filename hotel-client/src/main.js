@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from './modules/Router';
-import Http from './modules/Http';
-import Auth from './modules/Auth';
+import Http from './modules/http';
+import Auth from './modules/auth';
 import Store from './modules/Store';
 import Element from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';

@@ -13,9 +13,8 @@
                                        placeholder="Enter Username"
                                        v-model="user.username"
                                 >
-                                <span class="icon">
-                            <i class="fa fa-user"></i>
-                        </span>
+                                <span class="icon"><i class="fa fa-user"></i></span>
+                                <span class="help is-danger">This email is invalid</span>
                             </div>
                         </div>
                     </div>
@@ -29,9 +28,8 @@
                                        placeholder="Enter Password"
                                        v-model="user.password"
                                 >
-                                <span class="icon">
-                                    <i class="fa fa-key"></i>
-                                </span>
+                                <span class="icon"><i class="fa fa-key"></i></span>
+                                <span class="help is-danger">This email is invalid</span>
                             </div>
                         </div>
                     </div>

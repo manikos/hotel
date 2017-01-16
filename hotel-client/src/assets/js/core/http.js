@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import Auth from '../modules/Auth'
+import Auth from './auth'
 
 /**
  * Http client for performing ajax call to the API
