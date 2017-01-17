@@ -7,7 +7,8 @@ import Auth from './auth'
 let http = Axios.create({
     headers: {
         'Content-Type': 'application/json'
-    }
+    },
+    // baseURL: process.env.API
 });
 
 /**
@@ -15,7 +16,6 @@ let http = Axios.create({
  */
 http.interceptors.request.use(config => {
     let AUTH_TOKEN = Auth.getToken();
-    console.log(AUTH_TOKEN);
     config.headers['Authorization'] = `JWT ${AUTH_TOKEN}`;
     return config
 }, error => {

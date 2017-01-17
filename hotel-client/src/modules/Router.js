@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import AuthPlugin from './auth';
+import AuthPlugin from '../assets/js/core/auth';
 import Auth from '../components/auth/Auth.vue';
 import Register from '../components/auth/Register.vue';
 import Login from '../components/auth/Login.vue';

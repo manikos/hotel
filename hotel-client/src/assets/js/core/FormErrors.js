@@ -11,11 +11,11 @@ class FormErrors {
      * Get error description for given form field
      *
      * @returns {string} - The validation error description
-     * @param errorName
+     * @param name {string} - The name of the error
      */
-    get(errorName) {
-        if (this.errors[errorName])
-            return this.errors[errorName][0];
+    get(name) {
+        if (this.errors[name])
+            return this.errors[name][0];
     }
 
     /**
@@ -29,45 +29,42 @@ class FormErrors {
 
     /**
      * Check if a given error name exists
-     * The given error may be in the format of:
      *
-     * @param error {String | Array | null} - An error name /or an array of error names
+     * @returns {boolean} - True if the error with `name` exists
+     * @param name {string} - The name of the error
+     */
+    has(name) {
+        // // Check array-based form inputs validation names
+        // if (/.\*+\./g.test(name)) {
+        //     // create a pattern to check if there are any names that match
+        //     let pattern = new RegExp(name.split('.')[0] + '.[0-9]+\.' + name.split('.')[2] + '$');
+        //     for (let err in this.names) {
+        //         // console.log(err);
+        //         // console.log(pattern.test(err));
+        //         if (pattern.test(err))
+        //             return true;
+        //     }
+        // }
+        return this.errors.hasOwnProperty(name);
+    }
+
+    /**
+     * Check if any errors exist
+     *
      * @returns {boolean}
      */
-    has(error) {
-        if (error) {
-            // Check array-based form inputs validation errors
-            if (/.\*+\./g.test(error)) {
-                // create a pattern to check if there are any errors that match
-                let pattern = new RegExp(error.split('.')[0] + '.[0-9]+\.' + error.split('.')[2] + '$');
-                for (let err in this.errors) {
-                    // console.log(err);
-                    // console.log(pattern.test(err));
-                    if (pattern.test(err))
-                        return true;
-                }
-            }
-            return this.errors.hasOwnProperty(error);
-        } else {
-            return Object.keys(this.errors).length > 0;
-        }
+    hasAny() {
+        return Object.keys(this.errors).length > 0;
     }
 
     /**
      * Clear the error(s)
-     * -----------------------------------------------------------
-     * WARNING:
-     * In case of clear() method the @param is NOT the error name
-     * but the name of the $event.target input field.
-     * Thus, we have to check the name format of the argument
-     * to figure out which error should we clear
-     * -----------------------------------------------------------
      *
-     * @param errorName
+     * @param name <string>: can be omitted to clear all errors
      */
-    clear(errorName) {
-        if (errorName)
-            delete this.errors[errorName];
+    clear(name) {
+        if (name)
+            delete this.errors[name];
         else
             this.errors = {};
     }
