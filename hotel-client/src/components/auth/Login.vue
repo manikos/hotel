@@ -6,33 +6,25 @@
                     <!--Username input-->
                     <div class="columns">
                         <div class="column is-full">
-                            <div class="control has-icon has-icon-right">
-                                <input id="username"
-                                       type="text"
-                                       class="input is-medium"
-                                       placeholder="Enter Username"
-                                       v-model="form.data.username"
-                                       @keydown="form.errors.clear('username')"
-                                >
-                                <span class="icon"><i class="fa fa-user"></i></span>
-                                <span v-if="form.errors.has('username')" class="help is-danger">{{form.errors.get('username')}}</span>
-                            </div>
+                            <username v-model="form.data.username"
+                                      :error="form.errors.get('username')"
+                                      placeholder="Enter your username"
+                                      @keydown="form.errors.clear('username')"
+                                      icon="fa-user"
+                            >
+                            </username>
                         </div>
                     </div>
                     <!--Password input-->
                     <div class="columns">
                         <div class="column is-full">
-                            <div class="control has-icon has-icon-right">
-                                <input id="password"
-                                       type="password"
-                                       class="input is-medium"
-                                       placeholder="Enter Password"
-                                       v-model="form.data.password"
-                                       @keydown="form.errors.clear('password')"
-                                >
-                                <span class="icon"><i class="fa fa-key"></i></span>
-                                <span v-if="form.errors.has('password')" class="help is-danger">{{form.errors.get('password')}}</span>
-                            </div>
+                            <password v-model="form.data.password"
+                                      :error="form.errors.get('password')"
+                                      placeholder="Enter your password"
+                                      @keydown="form.errors.clear('password')"
+                                      icon="fa-key"
+                            >
+                            </password>
                         </div>
                     </div>
                     <!--Submit button-->
@@ -64,10 +56,16 @@
 
 <script>
 
-    import Form from '../../assets/js/core/Form'
+    import Form from '../../assets/js/core/Form';
+    import TextInput from '../shared/ui/TextInput.vue'
+    import PasswordInput from '../shared/ui/PasswordInput.vue'
 
     export default {
         name: 'login',
+        components: {
+            username: TextInput,
+            password: PasswordInput
+        },
         data() {
             return {
                 form: new Form({
